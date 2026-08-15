@@ -2,7 +2,7 @@
 > For Mintlify product knowledge (components, configuration, writing standards),
 > install the Mintlify skill: `npx skills add https://mintlify.com/docs`
 
-# Documentation project instructions
+# DJ Support documentation project instructions
 
 ## About this project
 
@@ -14,8 +14,9 @@
 
 ## Terminology
 
-{/* Add product-specific terms and preferred usage */}
-{/* Example: Use "workspace" not "project", "member" not "user" */}
+- Use the canonical domain language from `spontain112/djsupport` `CONTEXT.md`.
+- Use **Transfer**, **Mirror**, **Snapshot**, **Preview**, **Provisional Playlist**, and **Approval** exactly as defined there.
+- Do not substitute “sync,” “import,” “job,” “dry run,” or “draft playlist” for those domain terms.
 
 ## Style preferences
 
@@ -29,5 +30,6 @@
 
 ## Content boundaries
 
-{/* Define what should and shouldn't be documented */}
-{/* Example: Don't document internal admin features */}
+- Public docs explain supported user workflows, domain concepts, safety boundaries, releases, and contributor entry points.
+- Do not publish credentials, local paths, personal playlists, reports, Corrections, Approved Matches, playlist state, or user-derived fixtures.
+- `spontain112/djsupport` remains canonical for product behavior, domain language, executable commands, and release state. This repository presents that truth; it does not redefine it.

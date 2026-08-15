@@ -1,20 +1,204 @@
 ---
-title: "Introduction"
-description: "Welcome to your project"
+title: "DJ Support documentation prototype"
+description: "Three directions for a public DJ Support documentation homepage."
+sidebarTitle: "Prototype home"
+mode: "custom"
+classification: public
 ---
 
-Write a short description of your product here. What it does, who it's for, and what they can accomplish with it.
+export const VariantSwitcher = () => {
+  const variants = [
+    { key: "A", name: "Guided transfer" },
+    { key: "B", name: "Control room" },
+    { key: "C", name: "Trust first" },
+  ]
+  const readVariant = () => {
+    if (typeof window === "undefined") return "A"
+    const requested = new URLSearchParams(window.location.search).get("variant")?.toUpperCase()
+    return variants.some((item) => item.key === requested) ? requested : "A"
+  }
+  const [variant, setVariant] = useState("A")
 
-<Tip>
-  Ready to make this your own? Start by editing this page. Update your `docs.json` file to customize your site. Then fill out the [Quickstart](/quickstart) page.
-</Tip>
+  useEffect(() => {
+    setVariant(readVariant())
+    const sync = () => setVariant(readVariant())
+    window.addEventListener("popstate", sync)
+    return () => window.removeEventListener("popstate", sync)
+  }, [])
 
-<Card title="Quickstart" icon="rocket" href="/quickstart">
-  This card links to the quickstart page in your project.
-</Card>
-<Card title="Components" icon="puzzle-piece" href="https://mintlify.com/docs/components">
-  Add cards, callouts, steps, tabs, and more to design and structure your pages.
-</Card>
-<Card title="Settings" icon="gear" href="https://mintlify.com/docs/organize/settings">
-  Set your site name, branding, and navigation in the `docs.json` file.
-</Card>
+  const choose = (next) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set("variant", next)
+    window.history.replaceState({}, "", url)
+    setVariant(next)
+  }
+
+  const cycle = (direction) => {
+    const index = variants.findIndex((item) => item.key === variant)
+    choose(variants[(index + direction + variants.length) % variants.length].key)
+  }
+
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      const tag = event.target?.tagName
+      if (["INPUT", "TEXTAREA"].includes(tag) || event.target?.isContentEditable) return
+      if (event.key === "ArrowLeft") cycle(-1)
+      if (event.key === "ArrowRight") cycle(1)
+    }
+    window.addEventListener("keydown", onKeyDown)
+    return () => window.removeEventListener("keydown", onKeyDown)
+  }, [variant])
+
+  const current = variants.find((item) => item.key === variant)
+
+  return (
+    <div className="not-prose">
+      {variant === "A" && <VariantA />}
+      {variant === "B" && <VariantB />}
+      {variant === "C" && <VariantC />}
+      <div className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1 rounded-full border border-white/15 bg-[#111016]/95 p-1.5 text-white shadow-2xl backdrop-blur">
+        <button aria-label="Previous variant" onClick={() => cycle(-1)} className="h-9 w-9 rounded-full hover:bg-white/10">←</button>
+        <div className="min-w-48 px-3 text-center text-sm font-medium">
+          {current.key} — {current.name}
+        </div>
+        <button aria-label="Next variant" onClick={() => cycle(1)} className="h-9 w-9 rounded-full hover:bg-white/10">→</button>
+      </div>
+    </div>
+  )
+}
+
+export const VariantA = () => (
+  <div className="mx-auto max-w-6xl px-6 pb-28 pt-10">
+    <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-violet-300">
+      Rekordbox + Beatport → Spotify
+    </div>
+    <div className="grid items-start gap-12 lg:grid-cols-[1.08fr_.92fr]">
+      <section>
+        <p className="mb-4 text-sm font-semibold text-violet-400">A — Guided transfer</p>
+        <h1 className="max-w-3xl text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl">Move the set.<br />Keep the judgment.</h1>
+        <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-400">Turn one curated playlist into a reviewable Spotify playlist. Preview every match, fix the misses, and approve only when it sounds right.</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a href="/quickstart" className="rounded-lg bg-violet-500 px-5 py-3 font-semibold text-white no-underline hover:bg-violet-400">Start your first transfer →</a>
+          <a href="/concepts/transfers" className="rounded-lg border border-zinc-700 px-5 py-3 font-semibold text-zinc-200 no-underline hover:border-zinc-500">How transfers work</a>
+        </div>
+        <div className="mt-12 grid gap-5 sm:grid-cols-3">
+          {[['01','Preview','Nothing changes in Spotify.'],['02','Review','Hear and correct proposals.'],['03','Approve','Retain only your decisions.']].map(([n,t,d]) => <div key={n} className="border-t border-zinc-700 pt-4"><span className="text-xs text-violet-400">{n}</span><h3 className="mt-2 text-base font-semibold">{t}</h3><p className="mt-1 text-sm text-zinc-500">{d}</p></div>)}
+        </div>
+      </section>
+      <aside className="overflow-hidden rounded-2xl border border-zinc-800 bg-[#121116] shadow-2xl">
+        <div className="flex items-center justify-between border-b border-zinc-800 px-5 py-4"><span className="text-sm font-semibold">Deep House · Preview</span><span className="rounded-full bg-amber-400/10 px-2 py-1 text-xs text-amber-300">3 need attention</span></div>
+        <div className="space-y-1 p-3">
+          {[['Night Bloom','Marina Vale','96%','Ready'],['Afterimage','Juno Field','82%','Review'],['Lumen Dub','Sera North','—','Unresolved'],['Soft Focus','Milo June','94%','Ready']].map(([track,artist,score,state],i) => <div key={track} className={`grid grid-cols-[32px_1fr_auto] items-center gap-3 rounded-xl p-3 ${i===1 ? 'bg-violet-500/10 ring-1 ring-violet-500/25' : 'bg-white/[.025]'}`}><div className="flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-violet-500/40 to-fuchsia-400/10 text-xs">{i+1}</div><div><div className="text-sm font-semibold">{track}</div><div className="text-xs text-zinc-500">{artist}</div></div><div className="text-right"><div className="text-xs font-mono text-zinc-300">{score}</div><div className={`text-[11px] ${state==='Ready' ? 'text-emerald-400' : 'text-amber-300'}`}>{state}</div></div></div>)}
+        </div>
+        <div className="border-t border-zinc-800 px-5 py-4 text-xs text-zinc-500">Preview is read-only · Spotify unchanged</div>
+      </aside>
+    </div>
+  </div>
+)
+
+export const VariantB = () => (
+  <div className="mx-auto max-w-6xl px-6 pb-28 pt-10">
+    <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
+      <aside className="rounded-2xl border border-zinc-800 bg-[#111015] p-5">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">B — Control room</p>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight">DJ Support</h1>
+        <p className="mt-2 text-sm leading-6 text-zinc-500">A field manual for controlled playlist transfers.</p>
+        <nav className="mt-8 space-y-1 text-sm">
+          {['Start here','Prepare your sources','Preview a transfer','Qualification workspace','Publish and approve','Recover and restore'].map((item,i) => <a key={item} href={i===0?'/quickstart':'/concepts/transfers'} className={`block rounded-lg px-3 py-2 no-underline ${i===0?'bg-cyan-400/10 text-cyan-200':'text-zinc-400 hover:bg-white/5'}`}>{item}</a>)}
+        </nav>
+        <div className="mt-10 border-t border-zinc-800 pt-5"><div className="text-xs text-zinc-600">SYSTEM POSTURE</div><div className="mt-2 flex items-center gap-2 text-sm text-emerald-400"><span className="h-2 w-2 rounded-full bg-emerald-400"></span>Local-first · bounded writes</div></div>
+      </aside>
+      <main>
+        <div className="rounded-2xl border border-zinc-800 bg-gradient-to-br from-cyan-400/[.08] via-transparent to-violet-500/[.08] p-8 md:p-10">
+          <div className="text-sm font-mono text-cyan-300">TRANSFER / START</div>
+          <h2 className="mt-4 max-w-2xl text-5xl font-semibold tracking-tight">Your crates in Spotify.<br />Your call at every step.</h2>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-400">Choose one source, preview the proposal, inspect anything uncertain, then authorize the exact playlist change.</p>
+          <div className="mt-8 rounded-xl border border-zinc-700 bg-black/30 p-4 font-mono text-sm"><span className="text-zinc-600">$</span> djsupport first-transfer --json<br /><span className="text-emerald-400">✓</span> next_action: choose_source_playlist</div>
+        </div>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <a href="/quickstart" className="group rounded-2xl border border-zinc-800 bg-[#111015] p-6 no-underline hover:border-cyan-400/40"><div className="text-xs font-mono text-cyan-300">RUNBOOK 01</div><h3 className="mt-3 text-xl font-semibold text-white">First Rekordbox transfer</h3><p className="mt-2 text-sm leading-6 text-zinc-500">From XML export to reviewed Spotify playlist.</p><div className="mt-6 text-sm text-cyan-300">Open runbook →</div></a>
+          <a href="/concepts/safety" className="group rounded-2xl border border-zinc-800 bg-[#111015] p-6 no-underline hover:border-violet-400/40"><div className="text-xs font-mono text-violet-300">BOUNDARIES</div><h3 className="mt-3 text-xl font-semibold text-white">What DJ Support can change</h3><p className="mt-2 text-sm leading-6 text-zinc-500">See the exact authority gates before you run anything.</p><div className="mt-6 text-sm text-violet-300">Inspect boundaries →</div></a>
+        </div>
+      </main>
+    </div>
+  </div>
+)
+
+export const VariantC = () => (
+  <div className="mx-auto max-w-5xl px-6 pb-28 pt-12">
+    <div className="mx-auto max-w-3xl text-center">
+      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-rose-300">C — Trust first</p>
+      <h1 className="mt-5 text-5xl font-semibold leading-tight tracking-tight md:text-6xl">Your music stays yours.</h1>
+      <p className="mx-auto mt-6 max-w-2xl text-xl leading-8 text-zinc-400">DJ Support helps move carefully curated selections to Spotify without treating your library—or your decisions—as disposable input.</p>
+    </div>
+    <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-800 md:grid-cols-3">
+      {[['eye','Preview before publishing','Inspect a complete proposal before any Spotify playlist changes.'],['lock','Private by default','Credentials, source libraries, reports, and matching knowledge stay in local application storage.'],['hand','Approval is explicit','Conversation, a preview, or a good score never counts as your approval.']].map(([icon,title,body]) => <div key={title} className="bg-[#111015] p-7"><div className="text-2xl text-rose-300">{icon==='eye'?'◉':icon==='lock'?'◇':'✦'}</div><h3 className="mt-5 text-lg font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-zinc-500">{body}</p></div>)}
+    </div>
+    <div className="mt-12 grid items-center gap-10 rounded-2xl bg-[#E9E5FF] p-8 text-[#17131F] md:grid-cols-[1fr_auto] md:p-10">
+      <div><div className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-700">The safe path</div><h2 className="mt-3 text-3xl font-semibold tracking-tight">One playlist. One preview. One explicit decision at a time.</h2><p className="mt-4 max-w-2xl leading-7 text-[#544D62]">Start with a bounded Rekordbox playlist. DJ Support guides you through setup, matching, qualification, publication, and a separate approval step.</p></div>
+      <a href="/quickstart" className="whitespace-nowrap rounded-lg bg-[#17131F] px-5 py-3 font-semibold text-white no-underline">Read the safe quickstart →</a>
+    </div>
+    <div className="mt-10 text-center"><a href="/concepts/transfers" className="text-sm font-semibold text-rose-300 no-underline">Understand Mirrors, Snapshots, and Transfers →</a></div>
+  </div>
+)
+
+export const Prototype = () => {
+  const variants = [
+    { key: "A", name: "Guided transfer" },
+    { key: "B", name: "Control room" },
+    { key: "C", name: "Trust first" },
+  ]
+  const readVariant = () => {
+    if (typeof window === "undefined") return "A"
+    const requested = new URLSearchParams(window.location.search).get("variant")?.toUpperCase()
+    return variants.some((item) => item.key === requested) ? requested : "A"
+  }
+  const [variant, setVariant] = useState("A")
+
+  useEffect(() => {
+    setVariant(readVariant())
+    const sync = () => setVariant(readVariant())
+    window.addEventListener("popstate", sync)
+    return () => window.removeEventListener("popstate", sync)
+  }, [])
+
+  const choose = (next) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set("variant", next)
+    window.history.replaceState({}, "", url)
+    setVariant(next)
+  }
+
+  const cycle = (direction) => {
+    const index = variants.findIndex((item) => item.key === variant)
+    choose(variants[(index + direction + variants.length) % variants.length].key)
+  }
+
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      const tag = event.target?.tagName
+      if (["INPUT", "TEXTAREA"].includes(tag) || event.target?.isContentEditable) return
+      if (event.key === "ArrowLeft") cycle(-1)
+      if (event.key === "ArrowRight") cycle(1)
+    }
+    window.addEventListener("keydown", onKeyDown)
+    return () => window.removeEventListener("keydown", onKeyDown)
+  }, [variant])
+
+  const current = variants.find((item) => item.key === variant)
+
+  return (
+    <div className="not-prose">
+      {variant === "A" && <VariantA />}
+      {variant === "B" && <VariantB />}
+      {variant === "C" && <VariantC />}
+      <div className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1 rounded-full border border-white/15 bg-[#111016]/95 p-1.5 text-white shadow-2xl backdrop-blur">
+        <button aria-label="Previous variant" onClick={() => cycle(-1)} className="h-9 w-9 rounded-full hover:bg-white/10">←</button>
+        <div className="min-w-48 px-3 text-center text-sm font-medium">{current.key} — {current.name}</div>
+        <button aria-label="Next variant" onClick={() => cycle(1)} className="h-9 w-9 rounded-full hover:bg-white/10">→</button>
+      </div>
+    </div>
+  )
+}
+
+<Prototype />

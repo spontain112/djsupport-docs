@@ -1,47 +1,60 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "Your first Rekordbox transfer"
+description: "Preview one Rekordbox playlist, review its matches, then decide whether to publish."
+icon: "play"
+classification: public
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
+DJ Support is designed to be operated through a local AI harness. The harness asks for one decision at a time and cannot infer permission from conversation.
 
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
+<Info>
+  This guide starts with one playlist and a read-only Preview. It never selects your whole library by default.
+</Info>
 
-## Prerequisites
+## Before you start
 
-Before you begin, you must have:
+- Python 3.10 or newer
+- A Spotify Developer application
+- A Rekordbox XML export
 
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
+## Install the stable release
 
-## Get started
+```bash
+python3 -m pip install "djsupport @ https://github.com/spontain112/djsupport/archive/refs/tags/v0.5.0.zip"
+```
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
+  <Step title="Configure Spotify">
+    Add your Spotify client ID and secret to `.env`. Allow this exact callback in the Spotify Developer Dashboard:
 
-    ```bash
-    npm install your-package
+    ```text
+    http://127.0.0.1:8888/callback
     ```
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
+  <Step title="Export one Rekordbox library">
+    In Rekordbox, choose **File → Export Collection in xml format**. Then save the reference locally:
 
     ```bash
-    your-cli init
+    djsupport library set /path/to/library.xml
+    djsupport library show
     ```
   </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
+  <Step title="Start the guided transfer">
+    Ask your local AI harness:
 
-    ```bash
-    your-cli start
-    ```
+    > Help me transfer my first Rekordbox playlist.
+
+    The harness calls `djsupport first-transfer --json` and returns one safe next action.
+  </Step>
+  <Step title="Preview before publishing">
+    Select exactly one playlist. Preview may retain private matching knowledge and a resumable checkpoint, but it cannot create or update a Spotify playlist.
+  </Step>
+  <Step title="Review, publish, then approve">
+    Inspect uncertain proposals in the Qualification Workspace. Applying a Qualification Draft requires explicit Spotify-write authorization. Approval is later and separate.
   </Step>
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
-
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+<CardGroup cols={2}>
+  <Card title="Understand Transfers" icon="repeat-2" href="/concepts/transfers">Learn why Rekordbox creates a Mirror by default.</Card>
+  <Card title="Read the safety model" icon="shield-check" href="/concepts/safety">See what stays local and where authority is required.</Card>
+</CardGroup>

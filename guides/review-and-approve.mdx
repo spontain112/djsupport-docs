@@ -1,0 +1,20 @@
+---
+title: "Review and approve"
+description: "Qualify uncertain matches, publish a provisional playlist, and approve separately."
+icon: "list-checks"
+classification: public
+---
+
+Rekordbox Mirrors can use the local Qualification Workspace to compare retained source facts with Spotify proposals.
+
+```bash
+djsupport sync -p "Deep House" --local-audio-audition \
+  --authorize-private-source
+djsupport web
+```
+
+The workspace offers four explicit outcomes: **Correct**, **Wrong — find another**, **Cannot verify**, or **Not my source**.
+
+<Warning>
+  A Qualification Draft carries no matching or playlist authority. Applying it and approving the resulting playlist remain separate operations.
+</Warning>

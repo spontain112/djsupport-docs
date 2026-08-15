@@ -1,0 +1,22 @@
+---
+title: "Preview a playlist"
+description: "Run matching and inspect the outcome without changing Spotify."
+icon: "eye"
+classification: public
+---
+
+For direct expert use, list available Rekordbox playlists:
+
+```bash
+djsupport list
+```
+
+Preview one playlist:
+
+```bash
+djsupport sync --playlist "Deep House" --dry-run
+```
+
+<Check>
+  Preview is read-only with respect to Spotify playlists and playlist state.
+</Check>
