@@ -1,0 +1,22 @@
+---
+title: "Upgrade safely"
+description: "Move to a newer stable DJ Support release without risking your library state."
+icon: "arrow-up-circle"
+classification: public
+---
+
+Use only the [latest final GitHub Release](https://github.com/spontain112/djsupport/releases/latest) for normal DJ work. Releases marked **Pre-release** are opt-in tests.
+
+## Before upgrading
+
+1. Create a backup with `djsupport backup` and store it outside DJ Support's application-data directory.
+2. Ask your Agent Client to read the [canonical upgrade guidance](https://github.com/spontain112/djsupport/blob/main/docs/upgrading.md) for the version you are installing.
+3. Confirm the exact final-release tag before your Agent Client changes the installation.
+
+## After upgrading
+
+Ask your Agent Client to check DJ Support's capabilities and library readiness. Then repeat the read-only [first Preview](/use/first-preview) with one selected Rekordbox playlist before approving any write.
+
+<Warning>
+  Keep the previous backup until the new release has completed a successful Preview. If the capability check or Preview fails, stop and use [Troubleshooting](/use/troubleshooting); do not keep retrying writes.
+</Warning>

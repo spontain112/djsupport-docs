@@ -64,7 +64,7 @@
           },
           {
             "group": "Keep it safe",
-            "pages": ["use/backup-and-restore", "use/troubleshooting", "use/support"]
+            "pages": ["use/backup-and-restore", "use/upgrade", "use/troubleshooting", "use/support"]
           }
         ]
       },
