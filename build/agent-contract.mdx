@@ -1,0 +1,20 @@
+---
+title: "Agent Client contract"
+description: "Integrate any local Agent Client without creating agent authority."
+icon: "bot"
+classification: public
+---
+
+Agent Clients use the same public Transfer policy as CLI and local web. The stable guided entry point is:
+
+```bash
+djsupport first-transfer --json
+```
+
+Every response exposes one primary `next_action`. Missing input is a successful structured state. JSON clients remain non-interactive, and conversation is never authorization.
+
+Read [ADR-0002](https://github.com/spontain112/djsupport/blob/main/docs/adr/0002-make-transfer-agent-native.md) and the canonical [agent-use guide](https://github.com/spontain112/djsupport/blob/main/README.md#ai-agent-use) before building an adapter.
+
+<Warning>
+  A harness may render reason codes and request exact missing input. It may not select a playlist, broaden a Batch, infer private-source access, write Spotify, apply a draft, or create Approval without the authority owned by that phase.
+</Warning>

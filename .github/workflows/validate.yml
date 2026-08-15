@@ -1,0 +1,49 @@
+name: Validate documentation
+
+'on':
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out documentation
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Check out canonical product source
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          repository: spontain112/djsupport
+          path: .product/djsupport
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "22"
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Install pinned Mintlify CLI
+        run: npm install --global mint@4.2.804
+      - name: Test documentation contract
+        run: python -m unittest discover -s tests -p 'test_*.py'
+      - name: Check canonical product facts
+        run: python scripts/check_product_contract.py --product-repo .product/djsupport
+      - name: Validate Mintlify build
+        run: mint validate
+      - name: Check links
+        run: mint broken-links
+      - name: Check accessibility
+        run: mint a11y

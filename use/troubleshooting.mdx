@@ -1,0 +1,30 @@
+---
+title: "Troubleshoot safely"
+description: "Resolve common setup and first-Transfer problems without exposing private music data."
+icon: "wrench"
+classification: public
+---
+
+Start by asking your Agent Client to run capability inspection and follow the returned `next_action`. Missing input is often a normal guided state, not a failure.
+
+<AccordionGroup>
+  <Accordion title="Spotify authentication does not complete" icon="key-round">
+    Confirm that the Spotify Developer application allows exactly `http://127.0.0.1:8888/callback`. `localhost` is not an alias for this callback. Keep the client secret private.
+  </Accordion>
+  <Accordion title="DJ Support cannot find the Rekordbox library" icon="file-question">
+    Export the collection as XML, then let the Agent Client configure the selected path only after it asks for private-source authorization. The path must remain local and must not appear in an issue report.
+  </Accordion>
+  <Accordion title="The wrong playlist was selected" icon="list-x">
+    Stop. A Source Selection must be explicit. Start a new bounded plan with the intended playlist instead of broadening or silently reusing the previous one.
+  </Accordion>
+  <Accordion title="A match looks wrong" icon="search-x">
+    Do not Approve it. Use Qualification and the bounded Correction workflow. A search result or high match score is not authority.
+  </Accordion>
+  <Accordion title="A Transfer stopped partway through" icon="rotate-ccw">
+    Ask the Agent Client to inspect the durable state and resume only when the returned identity and next action match the same bounded work. Do not rerun uncertain authority writes from memory.
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Report a reproducible bug" icon="github" href="/use/support">
+  Check the privacy boundary before opening a GitHub issue.
+</Card>

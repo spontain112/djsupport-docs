@@ -1,0 +1,10 @@
+---
+title: "Private storage"
+description: "Ownership, versioning, migrations, and privacy boundaries."
+icon: "database"
+classification: public
+---
+
+Read the canonical [private storage documentation](https://github.com/spontain112/djsupport/blob/main/docs/storage.md) and [ADR-0001](https://github.com/spontain112/djsupport/blob/main/docs/adr/0001-keep-user-data-out-of-the-repository.md).
+
+Credentials, source-library data, matching knowledge, Corrections, Transfer manifests, playlist state, reports, and user-derived regression evidence belong in private application storage. Repository content may include schemas, migrations, and synthetic fixtures, but not user data.

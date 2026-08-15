@@ -1,72 +1,112 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "theme": "luma",
+  "name": "DJ Support",
+  "description": "Move selected Rekordbox playlists into Spotify with review and explicit approval.",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#177A50",
+    "light": "#61D39A",
+    "dark": "#239466"
+  },
+  "appearance": {
+    "default": "dark",
+    "strict": false
+  },
+  "fonts": {
+    "family": "DM Sans",
+    "heading": {
+      "family": "Space Grotesk",
+      "weight": 650
+    }
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "background": {
+    "decoration": "grid",
+    "color": {
+      "light": "#F5F7F5",
+      "dark": "#0B0D0C"
+    }
   },
   "favicon": "/favicon.svg",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "/"
+  },
   "navigation": {
-    "pages": [
-      {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
-      }
-    ],
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "GitHub",
+          "href": "https://github.com/spontain112/djsupport",
+          "icon": "github"
         }
       ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    },
+    "tabs": [
+      {
+        "tab": "Use DJ Support",
+        "icon": "headphones",
+        "groups": [
+          {
+            "group": "Start",
+            "pages": ["index", "use/first-preview"]
+          },
+          {
+            "group": "Review and publish",
+            "pages": ["use/review-and-approve"]
+          },
+          {
+            "group": "Choose a workflow",
+            "pages": ["use/transfers", "use/beatport"]
+          },
+          {
+            "group": "Keep it safe",
+            "pages": ["use/backup-and-restore", "use/troubleshooting", "use/support"]
+          }
+        ]
+      },
+      {
+        "tab": "Build DJ Support",
+        "icon": "code-2",
+        "groups": [
+          {
+            "group": "Contribute",
+            "pages": ["build/overview", "build/contributing"]
+          },
+          {
+            "group": "Understand the system",
+            "pages": ["build/architecture", "build/domain-model", "build/lifecycles", "build/storage"]
+          },
+          {
+            "group": "Reference",
+            "pages": ["build/agent-contract", "build/releases", "build/decisions"]
+          }
+        ]
+      }
+    ]
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Latest release",
+        "href": "https://github.com/spontain112/djsupport/releases/latest"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "label": "Start with your agent",
+      "href": "/use/first-preview"
     }
   },
   "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
-    ]
+    "options": ["copy", "view", "chatgpt", "claude", "cursor", "vscode"]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/spontain112/djsupport"
     }
   }
 }

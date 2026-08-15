@@ -1,0 +1,21 @@
+---
+title: "Architecture"
+description: "Transfer policy, thin clients, adapters, and storage ownership."
+icon: "boxes"
+classification: public
+---
+
+The public `Transfer` interface owns high-level policy. CLI, local web, and Agent Clients are thin renderings over the same contract; they may not create separate matching, Approval, persistence, or publication rules.
+
+```mermaid
+flowchart LR
+  R["Rekordbox"] --> T["Transfer policy"]
+  B["Beatport"] --> T
+  C["CLI"] --> T
+  W["Local web"] --> T
+  A["Agent Client"] --> T
+  T --> L["Private local state"]
+  T --> S["Spotify"]
+```
+
+Read the canonical [architecture document](https://github.com/spontain112/djsupport/blob/main/docs/architecture.md) for module boundaries, adapters, effects, and recovery states.

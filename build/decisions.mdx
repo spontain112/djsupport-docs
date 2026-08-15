@@ -1,0 +1,15 @@
+---
+title: "Architecture decisions"
+description: "Why durable product and documentation boundaries exist."
+icon: "landmark"
+classification: public
+---
+
+Architecture decisions live in the canonical [`docs/adr`](https://github.com/spontain112/djsupport/tree/main/docs/adr) directory.
+
+<CardGroup cols={2}>
+  <Card title="Keep user data out of the repository" icon="shield" href="https://github.com/spontain112/djsupport/blob/main/docs/adr/0001-keep-user-data-out-of-the-repository.md">Private user-derived state remains local.</Card>
+  <Card title="Make Transfer agent-native" icon="bot" href="https://github.com/spontain112/djsupport/blob/main/docs/adr/0002-make-transfer-agent-native.md">Harnesses are first-class clients without gaining authority.</Card>
+  <Card title="Keep Correction Search subordinate" icon="search" href="https://github.com/spontain112/djsupport/blob/main/docs/adr/0003-keep-correction-search-subordinate-to-approval.md">Search surfaces candidates, not verdicts.</Card>
+  <Card title="Separate public documentation" icon="book-open" href="https://github.com/spontain112/djsupport/blob/main/docs/adr/0004-separate-public-documentation-from-product-authority.md">Public explanation and canonical product authority stay in separate repositories.</Card>
+</CardGroup>

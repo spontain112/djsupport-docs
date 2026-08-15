@@ -1,0 +1,16 @@
+---
+title: "Lifecycles and authority"
+description: "States, effects, and explicit authority transitions."
+icon: "git-branch"
+classification: public
+---
+
+Read the canonical [lifecycle documentation](https://github.com/spontain112/djsupport/blob/main/docs/lifecycles.md) before changing publication, Qualification, Approval, recovery, or playlist-state behavior.
+
+The critical separation is stable:
+
+1. capability inspection is side-effect free;
+2. planning is bounded by an explicit Source Selection;
+3. private-source reads require their own authorization;
+4. Spotify mutation requires separate explicit authorization;
+5. Approval is later, playlist-scoped matching authority.

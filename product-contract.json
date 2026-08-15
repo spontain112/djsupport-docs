@@ -1,0 +1,28 @@
+{
+  "stable_version": "0.5.0",
+  "commands": [
+    "djsupport first-transfer --json",
+    "djsupport backup"
+  ],
+  "terms": [
+    "Transfer",
+    "Source Selection",
+    "Mirror",
+    "Snapshot",
+    "Preview",
+    "Qualification Draft",
+    "Provisional Playlist",
+    "Approval",
+    "Agent Client"
+  ],
+  "source_links": [
+    "https://github.com/spontain112/djsupport/blob/main/AGENTS.md",
+    "https://github.com/spontain112/djsupport/blob/main/CONTEXT.md",
+    "https://github.com/spontain112/djsupport/blob/main/CONTRIBUTING.md",
+    "https://github.com/spontain112/djsupport/blob/main/docs/architecture.md",
+    "https://github.com/spontain112/djsupport/blob/main/docs/domain-model.md",
+    "https://github.com/spontain112/djsupport/blob/main/docs/lifecycles.md",
+    "https://github.com/spontain112/djsupport/blob/main/docs/storage.md",
+    "https://github.com/spontain112/djsupport/blob/main/docs/releasing.md"
+  ]
+}

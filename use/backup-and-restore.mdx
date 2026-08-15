@@ -1,0 +1,31 @@
+---
+title: "Back up and restore"
+description: "Protect DJ Support's private local state before upgrades or experiments."
+icon: "archive-restore"
+classification: public
+---
+
+DJ Support keeps matching knowledge, Transfer manifests, playlist state, configuration, and recovery information in private macOS application storage. Back it up before testing a new release or changing a workflow you rely on.
+
+## Create a backup
+
+Ask your Agent Client to run the stable backup command and place the result somewhere separate from DJ Support's application-data directory:
+
+```bash
+djsupport backup
+```
+
+<Warning>
+  A backup can contain private user-derived state. Do not commit it, attach it to a GitHub issue, or place it in a public shared folder.
+</Warning>
+
+## Restore safely
+
+1. Stop any running DJ Support web process or Transfer.
+2. Keep the current application-data directory until the restore is verified.
+3. Ask your Agent Client to inspect the installed release's restore guidance.
+4. Restore from a known backup, then inspect capability and library readiness before running a Transfer.
+
+## Before a preview release
+
+Use the latest final release for normal work. If you intentionally test a pre-release, back up first and use copies of any Rekordbox library or audio collection involved. Never test against the only copy.

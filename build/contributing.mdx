@@ -1,0 +1,23 @@
+---
+title: "Contribute"
+description: "Set up a local source checkout and verify changes offline."
+icon: "git-pull-request"
+classification: public
+---
+
+Start with the canonical [contributor guide](https://github.com/spontain112/djsupport/blob/main/CONTRIBUTING.md) and [repository instructions](https://github.com/spontain112/djsupport/blob/main/AGENTS.md).
+
+```bash
+git clone https://github.com/spontain112/djsupport.git
+cd djsupport
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e ".[dev]"
+pytest
+```
+
+<Warning>
+  The default test suite is offline. Live Spotify or Beatport calls, private Rekordbox/audio reads, playlist mutation, and release publication remain explicitly gated.
+</Warning>
+
+Use a named branch or worktree. Product work starts from the public Transfer interface and canonical language in `CONTEXT.md`.

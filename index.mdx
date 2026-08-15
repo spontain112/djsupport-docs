@@ -1,20 +1,40 @@
 ---
-title: "Introduction"
-description: "Welcome to your project"
+title: "DJ Support"
+description: "Move selected Rekordbox playlists into Spotify with review and explicit approval."
+sidebarTitle: "Start here"
+mode: "custom"
+classification: public
 ---
 
-Write a short description of your product here. What it does, who it's for, and what they can accomplish with it.
+<div className="not-prose mx-auto max-w-6xl px-6 pb-24 pt-12">
+  <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
+    Rekordbox → Spotify · macOS
+  </div>
 
-<Tip>
-  Ready to make this your own? Start by editing this page. Update your `docs.json` file to customize your site. Then fill out the [Quickstart](/quickstart) page.
-</Tip>
+  <div className="grid items-start gap-12 lg:grid-cols-[1.08fr_.92fr]">
+    <section>
+      <p className="mb-4 text-sm font-semibold text-emerald-400">Free, open source, and self-supported</p>
+      <h1 className="max-w-3xl text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl">Move the set.<br />Keep the judgment.</h1>
+      <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-400">Ask your local Agent Client to turn one selected Rekordbox playlist into a reviewable Spotify playlist. Preview every proposal, fix what needs attention, and approve only when it sounds right.</p>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <a href="/use/first-preview" className="rounded-lg bg-[#239466] px-5 py-3 font-semibold text-white no-underline hover:bg-[#2AA975]">Start with your agent →</a>
+        <a href="/use/transfers" className="rounded-lg border border-zinc-700 px-5 py-3 font-semibold text-zinc-200 no-underline hover:border-zinc-500">How Transfers work</a>
+      </div>
+      <div className="mt-12 grid gap-5 sm:grid-cols-3">
+        <div className="border-t border-zinc-700 pt-4"><span className="text-xs text-emerald-400">01</span><h2 className="mt-2 text-base font-semibold">Preview</h2><p className="mt-1 text-sm text-zinc-500">Spotify stays unchanged.</p></div>
+        <div className="border-t border-zinc-700 pt-4"><span className="text-xs text-emerald-400">02</span><h2 className="mt-2 text-base font-semibold">Review</h2><p className="mt-1 text-sm text-zinc-500">Hear and correct proposals.</p></div>
+        <div className="border-t border-zinc-700 pt-4"><span className="text-xs text-emerald-400">03</span><h2 className="mt-2 text-base font-semibold">Approve</h2><p className="mt-1 text-sm text-zinc-500">Retain only your decisions.</p></div>
+      </div>
+    </section>
 
-<Card title="Quickstart" icon="rocket" href="/quickstart">
-  This card links to the quickstart page in your project.
-</Card>
-<Card title="Components" icon="puzzle-piece" href="https://mintlify.com/docs/components">
-  Add cards, callouts, steps, tabs, and more to design and structure your pages.
-</Card>
-<Card title="Settings" icon="gear" href="https://mintlify.com/docs/organize/settings">
-  Set your site name, branding, and navigation in the `docs.json` file.
-</Card>
+    <div className="overflow-hidden rounded-2xl border border-zinc-800 bg-[#121512] shadow-2xl">
+      <div className="flex items-center justify-between border-b border-zinc-800 px-5 py-4"><span className="text-sm font-semibold">Your playlist · Preview</span><span className="rounded-full bg-amber-400/10 px-2 py-1 text-xs text-amber-300">3 need attention</span></div>
+      <div className="space-y-1 p-3">
+        <div className="grid grid-cols-[32px_1fr_auto] items-center gap-3 rounded-xl bg-white/[.025] p-3"><div className="flex h-8 w-8 items-center justify-center rounded-md bg-emerald-500/15 text-xs">1</div><div><div className="text-sm font-semibold">Matched track</div><div className="text-xs text-zinc-500">Ready to review</div></div><div className="text-xs text-emerald-400">Ready</div></div>
+        <div className="grid grid-cols-[32px_1fr_auto] items-center gap-3 rounded-xl bg-emerald-500/10 p-3 ring-1 ring-emerald-500/25"><div className="flex h-8 w-8 items-center justify-center rounded-md bg-emerald-500/15 text-xs">2</div><div><div className="text-sm font-semibold">Uncertain proposal</div><div className="text-xs text-zinc-500">Compare before publishing</div></div><div className="text-xs text-amber-300">Review</div></div>
+        <div className="grid grid-cols-[32px_1fr_auto] items-center gap-3 rounded-xl bg-white/[.025] p-3"><div className="flex h-8 w-8 items-center justify-center rounded-md bg-emerald-500/15 text-xs">3</div><div><div className="text-sm font-semibold">Unresolved track</div><div className="text-xs text-zinc-500">Choose what happens next</div></div><div className="text-xs text-amber-300">Unresolved</div></div>
+      </div>
+      <div className="border-t border-zinc-800 px-5 py-4 text-xs text-zinc-500">Preview is read-only · Spotify unchanged</div>
+    </div>
+  </div>
+</div>
