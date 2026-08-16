@@ -1,18 +1,18 @@
 ---
-title: "Transfers, Mirrors, and Snapshots"
-description: "Choose the stable result that matches what you want to maintain."
+title: "Choose ongoing sync or a one-time copy"
+description: "Keep a Rekordbox playlist aligned with Spotify or capture a selection once."
 icon: "repeat-2"
 classification: public
 ---
 
-A **Transfer** is one complete attempt to move an explicitly selected source into Spotify. It includes matching, publication, retained matching knowledge, playlist state when applicable, and an outcome report.
+DJ Support can maintain a Spotify version over time or make a one-time copy. Choose based on what you want to happen after the first playlist is created.
 
 <CardGroup cols={2}>
-  <Card title="Mirror" icon="refresh-cw">
-    An ongoing relationship. Later Transfers update the managed Spotify playlist to match its current Rekordbox Source Selection. Rekordbox uses a Mirror by default.
+  <Card title="Keep it in sync" icon="refresh-cw">
+    Later syncs update the same managed Spotify playlist to follow the current Rekordbox playlist. Contributor documentation calls this ongoing relationship a **Mirror**.
   </Card>
-  <Card title="Snapshot" icon="camera">
-    A one-time Spotify playlist representing a Beatport chart or label Source Selection at the time of Transfer. Beatport uses a Snapshot by default.
+  <Card title="Copy it once" icon="camera">
+    Create a Spotify playlist from a Beatport chart or label selection as it exists now. Contributor documentation calls this one-time result a **Snapshot**.
   </Card>
 </CardGroup>
 
@@ -20,11 +20,11 @@ A **Transfer** is one complete attempt to move an explicitly selected source int
 
 | You want to… | Choose |
 | --- | --- |
-| Keep one Spotify playlist aligned with a Rekordbox playlist | Rekordbox Mirror |
-| Capture a Beatport chart once | Beatport Snapshot |
-| Capture a Beatport label selection once | Beatport Snapshot |
-| Maintain a Beatport selection over time | Opt into a Mirror only when you truly want an ongoing relationship |
+| Keep one Spotify playlist aligned with a Rekordbox playlist | Keep it in sync |
+| Capture a Beatport chart once | Copy it once |
+| Capture a Beatport label selection once | Copy it once |
+| Maintain a Beatport selection over time | Choose ongoing sync only when you truly want it |
 
 <Tip>
-  Start with one selected Rekordbox playlist and Preview. Whole-library processing is deliberately explicit because it can be expensive.
+  Start with one Rekordbox playlist and check its Spotify matches. Processing the whole library requires an explicit choice because it can be expensive.
 </Tip>

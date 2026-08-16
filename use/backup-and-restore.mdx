@@ -5,11 +5,11 @@ icon: "archive-restore"
 classification: public
 ---
 
-DJ Support keeps matching knowledge, Transfer manifests, playlist state, configuration, and recovery information in private macOS application storage. Back it up before testing a new release or changing a workflow you rely on.
+DJ Support keeps remembered song matches, playlist-sync records, configuration, and recovery information in private macOS application storage. Back it up before testing a new release or changing a workflow you rely on.
 
 ## Create a backup
 
-Ask your Agent Client to run the stable backup command and place the result somewhere separate from DJ Support's application-data directory:
+Ask your local AI agent to run the stable backup command and place the result somewhere separate from DJ Support's application-data directory:
 
 ```bash
 djsupport backup
@@ -21,10 +21,10 @@ djsupport backup
 
 ## Restore safely
 
-1. Stop any running DJ Support web process or Transfer.
+1. Stop any running DJ Support process or playlist sync.
 2. Keep the current application-data directory until the restore is verified.
-3. Ask your Agent Client to inspect the installed release's restore guidance.
-4. Restore from a known backup, then inspect capability and library readiness before running a Transfer.
+3. Ask your local AI agent to inspect the installed release's restore guidance.
+4. Restore from a known backup, then check that DJ Support and the music library are ready before syncing a playlist.
 
 ## Before a preview release
 

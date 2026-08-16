@@ -1,37 +1,37 @@
 ---
-title: "Review, publish, and Approve"
-description: "Continue from Preview without collapsing review, Spotify publication, and Approval into one action."
+title: "Review matches and update Spotify"
+description: "Choose uncertain songs, authorize the playlist change, and decide what DJ Support should remember."
 icon: "list-checks"
 classification: public
 ---
 
-Preview is evidence, not permission. Continue one explicit decision at a time.
+Seeing possible matches does not give DJ Support permission to change Spotify. Continue one explicit decision at a time.
 
 <Steps>
-  <Step title="Open the Qualification Workspace">
-    For a selected Rekordbox playlist, compare source facts with the proposed Spotify matches. If you authorized Local Audition, you can hear the exact selected source occurrence locally.
+  <Step title="Review the songs that need your choice">
+    Compare your Rekordbox version with the possible Spotify match. If you allowed local listening, you can hear the exact Rekordbox version from your Mac.
   </Step>
-  <Step title="Qualify each item needing attention">
-    Choose **Correct**, **Wrong — find another**, **Cannot verify**, or **Not my source**. These choices form a private Qualification Draft; they are not Approval.
+  <Step title="Record your match choices">
+    Choose **Correct**, **Wrong — find another**, **Cannot verify**, or **Not my source**. DJ Support saves these as private, revisable match choices. Spotify has not changed yet.
   </Step>
-  <Step title="Authorize the Spotify write">
-    Applying the Qualification Draft and publishing the Provisional Playlist changes Spotify. Your Agent Client must ask for explicit Spotify-write authorization for this bounded action.
+  <Step title="Authorize the exact playlist change">
+    Your local AI agent shows the playlist name, included and omitted songs, order, and privacy before asking permission. Authorizing this step creates or updates that private Spotify playlist.
   </Step>
-  <Step title="Review the Provisional Playlist in Spotify">
-    Listen in Spotify. Removing a proposed track before Approval rejects that proposed match. A published playlist still carries no matching authority.
+  <Step title="Listen to the private playlist in Spotify">
+    Check that it sounds right. Removing a song tells DJ Support not to reuse that proposed match. Creating the playlist alone does not make its matches reusable.
   </Step>
-  <Step title="Approve separately">
-    Approval compares the reviewed playlist with its Publication Manifest. Surviving or corrected matches become Approved Matches; removed proposals become Rejected Matches. Approval itself performs no additional Spotify mutation.
+  <Step title="Choose whether to remember the matches">
+    DJ Support compares the playlist you reviewed with the version it created. Confirmed and corrected song matches can be remembered for later syncs; removed suggestions are remembered as rejected. Spotify does not change again during this step.
   </Step>
 </Steps>
 
-<Warning>
-  Conversation, a match score, Preview, Qualification, and playlist publication are never Approval.
-</Warning>
+<Info>
+  Contributor documentation calls these stages **Preview**, **Qualification Draft**, **Provisional Playlist**, and **Approval**. The DJ-facing labels describe what you see and what changes.
+</Info>
 
 ## When a proposal is wrong
 
-- Use **Wrong — find another** to enter the bounded Correction workflow.
-- Choose the Spotify result yourself; searching does not create a Correction.
+- Use **Wrong — find another** to search for a different Spotify version.
+- Choose the Spotify result yourself; a search result is only a suggestion.
 - Use **Cannot verify** when you need to stop without inventing a verdict.
 - Never put private playlist contents, file paths, or reports into a GitHub issue.

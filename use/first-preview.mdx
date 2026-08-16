@@ -1,13 +1,13 @@
 ---
-title: "Reach your first Preview"
-description: "Ask a local Agent Client to install DJ Support and preview one Rekordbox playlist safely."
+title: "Check your first Spotify matches"
+description: "Ask a local AI agent to install DJ Support and check one Rekordbox playlist safely."
 icon: "play"
 classification: public
 ---
 
-You do not need to learn the command line. Give the request below to a local Agent Client that can run shell commands, read structured output, and stop for your authorization.
+You do not need to learn the command line. Give the request below to a local AI agent that can work on your Mac, such as Claude Code or Codex. It must stop before reading private music data or changing Spotify.
 
-<Prompt description="Copy this setup request into your local Agent Client.">
+<Prompt description="Copy this setup request into your local AI agent.">
 Install the latest stable final release of DJ Support on this Mac. Help me configure it safely, then guide me through previewing one explicitly selected Rekordbox playlist. Use `djsupport first-transfer --json` and follow the single `next_action` it returns. Do not inspect private source data or modify Spotify without asking for the exact authorization required by that step. Never select my whole library by default.
 </Prompt>
 
@@ -16,10 +16,10 @@ Install the latest stable final release of DJ Support on this Mac. Help me confi
     Open Claude Code in a local folder, paste the request, and press Return. Review every permission request before accepting it.
   </Tab>
   <Tab title="Codex">
-    Start a local Codex task, paste the request, and send it. Keep the task open while the Agent Client guides each checkpoint.
+    Start a local Codex task, paste the request, and send it. Keep the task open while Codex guides each checkpoint.
   </Tab>
   <Tab title="Another local agent">
-    Paste the same request into any local Agent Client with shell access and structured-output support. The product workflow does not change by agent.
+    Paste the same request into any local AI agent with shell access and structured-output support. The DJ Support workflow does not change by agent.
   </Tab>
 </Tabs>
 
@@ -31,7 +31,7 @@ Install the latest stable final release of DJ Support on this Mac. Help me confi
 
 <Steps>
   <Step title="Install the stable release">
-    Your Agent Client checks Python, installs the exact latest final release, and verifies that `djsupport` is available. It should not install a moving development branch.
+    Your local AI agent checks Python, installs the exact latest final release, and verifies that `djsupport` is available. It should not install a moving development branch.
   </Step>
   <Step title="Complete the Spotify checkpoint">
     You create or select a Spotify Developer application. Allow this exact callback URL:
@@ -40,19 +40,19 @@ Install the latest stable final release of DJ Support on this Mac. Help me confi
     http://127.0.0.1:8888/callback
     ```
 
-    Your Agent Client can explain the page and verify local configuration afterward. You must handle sign-in and secrets yourself.
+    Your local AI agent can explain the page and verify local configuration afterward. You must handle sign-in and secrets yourself.
   </Step>
   <Step title="Export Rekordbox XML">
-    In Rekordbox, choose **File → Export Collection in xml format**. Tell the Agent Client where you saved the file only when it asks for the private-source authorization needed to configure it.
+    In Rekordbox, choose **File → Export Collection in xml format**. Tell the local AI agent where you saved the file only when it asks for permission to use it.
   </Step>
   <Step title="Choose one playlist">
     Select one named Rekordbox playlist. DJ Support does not infer a selection and does not choose your complete library by default.
   </Step>
-  <Step title="Reach Preview">
-    Preview performs matching and reports proposals, but it cannot create or update a Spotify playlist. Stop here and inspect which items need attention.
+  <Step title="Check the Spotify matches">
+    DJ Support finds possible Spotify matches and reports which songs need your choice. It cannot create or update a Spotify playlist at this step. Stop here and inspect the results.
   </Step>
 </Steps>
 
-<Card title="Continue from Preview" icon="list-checks" href="/use/review-and-approve">
-  Review uncertain proposals, publish with explicit authority, then Approve separately.
+<Card title="Review the uncertain songs" icon="list-checks" href="/use/review-and-approve">
+  Choose the right Spotify versions, authorize the private playlist change, then decide whether DJ Support should remember your matches.
 </Card>
