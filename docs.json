@@ -10,7 +10,7 @@
   },
   "appearance": {
     "default": "dark",
-    "strict": false
+    "strict": true
   },
   "fonts": {
     "family": "DM Sans",
