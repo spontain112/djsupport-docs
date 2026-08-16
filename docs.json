@@ -97,7 +97,7 @@
     ],
     "primary": {
       "type": "button",
-      "label": "Start with your agent",
+      "label": "Sync your first playlist",
       "href": "/use/first-preview"
     }
   },
